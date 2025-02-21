@@ -62,10 +62,10 @@ async function main(webSocketDebuggerUrl) {
         } catch {}
     };
 
-    await socket.send('{"id":1,"method":"Runtime.enable","params":{}}');
-    await socket.send('{"id":2,"method":"Debugger.enable","params":{"maxScriptsCacheSize":100000000}}');
-    await socket.send('{"id":3,"method":"Debugger.setSkipAllPauses","params":{"skip":False}}');
-    await socket.send('{"id":4,"method":"Debugger.pause","params":{}}');
+    await socket.send('{"id":1,"method":"Runtime.enable","params":{}}');                                      // 开启Runtime，获取帧id
+    await socket.send('{"id":2,"method":"Debugger.enable","params":{"maxScriptsCacheSize":100000000}}');      // 开启debugger
+    await socket.send('{"id":3,"method":"Debugger.setSkipAllPauses","params":{"skip":False}}');               // pause
+    await socket.send('{"id":4,"method":"Debugger.pause","params":{}}');                                      // pause
 
     await sleep(5000);
 
